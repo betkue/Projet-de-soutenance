@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState,useContext, ChangeEvent } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { AppContext } from '@/utils/AppContext';
 
 const Form = styled.form`
   display: flex;
@@ -149,6 +150,9 @@ const NavItem = styled.li`
 `;
 
 export default function Home() {
+  const {state,updateState} = useContext(AppContext);
+  //ecrire state.updateState("colis",variable colis)
+  //lire state.colis
   const [nomColis, setNomColis] = useState('');
   const [poidsColis, setPoidsColis] = useState('');
   const [largeurColis, setLargeurColis] = useState('');

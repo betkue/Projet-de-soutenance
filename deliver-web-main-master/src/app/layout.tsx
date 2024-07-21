@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../css/globals.css";
 import Footer from "@/components/Footer";
+import AppProvider from '../utils/AppContext'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <head>
-      <link rel="icon" href="assets/favicon.ico" />
-      </head>
-      <body className={inter.className}>
-        {children}
-        <Footer></Footer>
+
+    <AppProvider>
+      <html lang="fr">
+        <head>
+          <link rel="icon" href="assets/favicon.ico" />
+        </head>
+        <body className={inter.className}>
+          {children}
+          <Footer></Footer>
         </body>
-    </html>
+      </html>
+    </AppProvider>
   );
 }
